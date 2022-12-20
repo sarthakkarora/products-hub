@@ -1,2 +1,2 @@
 # products-hub
-Created with CodeSandbox
+A product listing app with pagination
