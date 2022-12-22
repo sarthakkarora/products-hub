@@ -10,12 +10,18 @@ export default function App() {
   }, [page]);
 
   const fetchData = () => {
-    fetch(`https://dummyjson.com/products?limit=10&skip=${page * 10}`)
+    fetch(`https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data?.products);
         setTotalPages(data?.total);
       });
+  };
+  const fetchPrevious = () => {
+    setPage(page - 1);
+  };
+  const fetchNext = () => {
+    setPage(page + 1);
   };
   return (
     <div className="App">
@@ -33,6 +39,9 @@ export default function App() {
           ))}
       </div>
       <div className="pagination">
+        <button onClick={fetchPrevious} disabled={page <= 1}>
+          Previous
+        </button>
         {totalPages > 0 &&
           Array(totalPages / 10)
             .fill(null)
@@ -47,6 +56,9 @@ export default function App() {
                 {index + 1}
               </button>
             ))}
+        <button onClick={fetchNext} disabled={page >= products.length - 1}>
+          Next
+        </button>
       </div>
     </div>
   );
