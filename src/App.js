@@ -1,5 +1,7 @@
 import "./styles.css";
 import { useState, useEffect } from "react";
+import Product from "./components/Product";
+import Pagination from "./components/Pagination";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -23,6 +25,14 @@ export default function App() {
   const fetchNext = () => {
     setPage(page + 1);
   };
+  let paginationProps = {
+    page,
+    setPage,
+    products,
+    totalPages,
+    fetchPrevious,
+    fetchNext,
+  };
   return (
     <div className="App">
       <nav className="navbar">
@@ -32,34 +42,11 @@ export default function App() {
       <div className="products">
         {products.length > 0 &&
           products.map((product) => (
-            <div key={product.id} className="products__item">
-              <img src={product.thumbnail} alt={product.title} />
-              <h3>{product.title}</h3>
-            </div>
+            <Product key={product.id} product={product} />
           ))}
       </div>
-      <div className="pagination">
-        <button onClick={fetchPrevious} disabled={page <= 1}>
-          Previous
-        </button>
-        {totalPages > 0 &&
-          Array(totalPages / 10)
-            .fill(null)
-            .map((_, index) => (
-              <button
-                className={
-                  page == index + 1 ? "pagination__button-selected" : ""
-                }
-                key={index}
-                onClick={() => setPage(index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
-        <button onClick={fetchNext} disabled={page >= products.length - 1}>
-          Next
-        </button>
-      </div>
+
+      <Pagination {...paginationProps} />
     </div>
   );
 }
