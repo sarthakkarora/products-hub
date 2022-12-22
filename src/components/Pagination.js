@@ -1,3 +1,5 @@
+import "../styles/Pagination.css";
+
 const Pagination = (props) => {
   let { products, totalPages, page, setPage, fetchPrevious, fetchNext } = props;
   return (

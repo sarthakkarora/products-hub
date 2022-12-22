@@ -1,3 +1,4 @@
+import "../styles/Product.css";
 const Product = ({ product }) => {
   return (
     <div className="products__item">

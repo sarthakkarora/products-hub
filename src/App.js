@@ -1,5 +1,6 @@
 import "./styles.css";
 import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
 import Product from "./components/Product";
 import Pagination from "./components/Pagination";
 
@@ -35,10 +36,7 @@ export default function App() {
   };
   return (
     <div className="App">
-      <nav className="navbar">
-        <h1>Products</h1>
-      </nav>
-
+      <Navbar />
       <div className="products">
         {products.length > 0 &&
           products.map((product) => (
