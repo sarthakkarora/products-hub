@@ -1,10 +1,13 @@
+import "../styles/Pagination.css";
+
 const Pagination = (props) => {
   let { products, totalPages, page, setPage, fetchPrevious, fetchNext } = props;
   return (
     <div className="pagination">
       <button onClick={fetchPrevious} disabled={page <= 1}>
-        Previous
+        <i className="fa-solid fa-chevron-left"></i>
       </button>
+
       {totalPages > 0 &&
         Array(props.totalPages / 10)
           .fill(null)
@@ -18,7 +21,7 @@ const Pagination = (props) => {
             </button>
           ))}
       <button onClick={fetchNext} disabled={page >= products.length - 1}>
-        Next
+        <i className="fa-solid fa-chevron-right"></i>
       </button>
     </div>
   );
