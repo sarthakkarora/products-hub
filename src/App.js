@@ -8,12 +8,17 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
   useEffect(() => {
     fetchData();
   }, [page]);
 
   const fetchData = () => {
-    fetch(`https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`)
+    fetch(
+      `https://dummyjson.com/products?limit=${pageSize}&skip=${
+        page * pageSize - pageSize
+      }`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -34,6 +39,8 @@ export default function App() {
     totalPages,
     fetchPrevious,
     fetchNext,
+    pageSize,
+    setPageSize,
   };
   return (
     <div className="App">

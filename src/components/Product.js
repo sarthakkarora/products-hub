@@ -17,9 +17,10 @@ const Product = ({ product }) => {
           <div>
             {new Array(5).fill("star").map((i, index) => (
               <i
+                key={index}
                 className="fa-solid fa-star"
                 style={{
-                  color: `${index + 1 <= rating ? "#34d399" : ""}`,
+                  color: `${index + 1 <= rating ? "#10b981" : ""}`,
                 }}
               ></i>
             ))}

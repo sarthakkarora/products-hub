@@ -4,12 +4,24 @@
   padding: 10px;
 }
 .pagination button {
-  padding: 10px 15px;
-  margin: 0px 5px;
+  padding: 7px 10px;
+  margin: 2px 5px;
+
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
   cursor: pointer;
-  font-size: 15px;
-  border-radius: 2px;
+  font-weight: 700;
+  color: gray;
 }
 .pagination__button-selected {
-  background-color: aquamarine;
+  color: #14532d !important;
+  font-size: 1.2rem !important;
+}
+.pagination button:first-child,
+.pagination button:last-child {
+  color: #14532d;
+  border-radius: 50%;
+  box-shadow: rgb(114 27 223 / 28%) 0px 2px 8px 0px;
 }
