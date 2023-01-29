@@ -16,6 +16,7 @@ export default function App() {
     fetch(`https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setProducts(data?.products);
         setTotalPages(data?.total);
       });
