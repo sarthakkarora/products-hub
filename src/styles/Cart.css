@@ -1,0 +1,6 @@
+.cart {
+  position: absolute;
+  height: 100vh;
+  right: 0;
+  max-width: 300px;
+}
