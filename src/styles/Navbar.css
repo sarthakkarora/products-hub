@@ -35,3 +35,15 @@
   outline: none;
   margin: 0 0.2rem;
 }
+.navbar__selections-items__cart {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  background-color: red;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.25rem;
+  border-radius: 50%;
+  top: -5px;
+  right: 0;
+}

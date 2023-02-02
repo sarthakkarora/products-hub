@@ -1,10 +1,26 @@
 import "../styles/Product.css";
+import { useContext } from "react";
+import { ProductContext } from "../context/ProductState";
+
 const Product = ({ product }) => {
+  let {
+    cart,
+    totalItems,
+    addItemToCart,
+    addItemToWishList,
+    increaseTotalCount,
+  } = useContext(ProductContext);
+
   let rating = Math.floor(product.rating);
   return (
     <div className="products__item">
       <img src={product.thumbnail} alt={product.title} />
-      <span className="products__item-like">
+      <span
+        className="products__item-like"
+        onClick={() => {
+          console.log(cart, totalItems);
+        }}
+      >
         <i className="fa-solid fa-heart"></i>
       </span>
       <div className="products__item-description">
@@ -27,7 +43,15 @@ const Product = ({ product }) => {
             <span style={{ margin: "0 2px" }}>({product.rating})</span>
           </div>
 
-          <button className="btn">Add to Cart</button>
+          <button
+            className="btn"
+            onClick={() => {
+              addItemToCart(product);
+              increaseTotalCount();
+            }}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
