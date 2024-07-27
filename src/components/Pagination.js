@@ -9,18 +9,16 @@ const Pagination = (props) => {
       </button>
 
       {totalPages > 0 &&
-        Array(props.totalPages / 10)
-          .fill(null)
-          .map((_, index) => (
-            <button
-              className={page == index + 1 ? "pagination__button-selected" : ""}
-              key={index}
-              onClick={() => setPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
-      <button onClick={fetchNext} disabled={page >= products.length - 1}>
+        Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            className={page === index + 1 ? "pagination__button-selected" : ""}
+            key={index}
+            onClick={() => setPage(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      <button onClick={fetchNext} disabled={page >= totalPages}>
         <i className="fa-solid fa-chevron-right"></i>
       </button>
     </div>
